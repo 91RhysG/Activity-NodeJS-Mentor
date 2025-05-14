@@ -29,3 +29,14 @@
   white-space: pre-wrap; 
   background-color: #f9f9f9;
 }
+
+code{
+  display: block;
+  padding: 0.2rem;
+  border-radius: 0.2rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid #ccc;
+}
