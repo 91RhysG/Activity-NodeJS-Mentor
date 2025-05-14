@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1 class="header"><%= header %></h1>
+
+    <button id="loadBtn" class="btn">Load Data</button>
+    <button id="clearBtn" class="btn">Clear Data</button>
+
+    <div id="result" class="card">
+      <em>No data loaded yet.</em>
+    </div>
+
+    <script>
+      document.getElementById('loadBtn').addEventListener('click', () => {
+        fetch('<%= apiEndpoint %>')
+          .then(res => res.json())
+          .then(data => {
+            document.getElementById('result').textContent =
+              JSON.stringify(data, null, 2);
+          })
+          .catch(err => {
+            document.getElementById('result').textContent = 'Error: ' + err;
+          });
+      });
+
+      document.getElementById('clearBtn').addEventListener('click', () => {
+        document.getElementById('result').textContent = 'No data loaded yet.';
+      });
+    </script>
+  </div>
+</body>
+</html>
