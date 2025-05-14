@@ -244,6 +244,35 @@ const port = process.env.PORT || 3000;
    - MongoDB Atlas
 
 
+### Vercel
+Vercel is a deployment location that is free for hobby use and has generous limits, it is however serverless
+1. Create a Vercel account
+
+2. Install Vercel into the project with 
+```bash
+npm install -g vercel
+```
+3. Create a vercel.json file with the details of:
+```json
+{
+  "version": 2,
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api/$1.js" },
+    { "src": "/|/index.html", "dest": "/public/index.html" },
+    { "src": "/(.*)", "dest": "/public/$1" }
+  ]
+}
+```
+4. Test against the Vercel dev server with 
+```js 
+vercel dev
+```
+5. Confirm that the build has been successful with the local server
+6. Push to prod
+```bash
+vercel --prod
+```
+
 ### Resources for Further Learning
 
 - [MDN Web Docs - Express/Node.js](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs)
